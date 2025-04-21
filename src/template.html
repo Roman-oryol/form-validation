@@ -1,9 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Form validation</title>
   </head>
-  <body></body>
+  <body>
+    <div class="form-container">
+      <form novalidate>
+        <p class="info-message">
+          Поля, помеченные звездочкой (*), обязательны к заполнению.
+        </p>
+        <label class="form-group" for="emiail">
+          <span class="field-label">Электронная почта*:</span>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="example@example.com"
+          />
+          <span class="error"></span>
+        </label>
+        <label class="form-group" for="country">
+          <span class="field-label">Страна*:</span>
+          <select name="country" id="country" required>
+            <option value="">Выберитие страну</option>
+            <option value="BY">Беларусь</option>
+            <option value="HU">Венгрия</option>
+            <option value="RS">Сербия</option>
+            <option value="RU">Россия</option>
+            <option value="UA">Украина</option>
+          </select>
+          <span class="error"></span>
+        </label>
+        <label class="form-group" for="postal-code">
+          <span class="field-label">Почтовый индекс*:</span>
+          <input type="text" id="postal-code" required placeholder="123456" />
+          <span class="error"></span>
+        </label>
+        <label class="form-group" for="password">
+          <span class="field-label">Пароль*:</span>
+          <input
+            type="password"
+            id="password"
+            required
+            placeholder="Введите пароль"
+          />
+          <span class="error"></span>
+        </label>
+        <label class="form-group" for="confirm-password">
+          <span class="field-label">Подтвердите пароль*:</span>
+          <input
+            type="password"
+            id="confirm-password"
+            required
+            placeholder="Повторите пароль"
+          />
+          <span class="error"></span>
+        </label>
+        <button class="submit">Отправить</button>
+      </form>
+    </div>
+  </body>
 </html>
