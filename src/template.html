@@ -41,7 +41,8 @@
             name="postal-code"
             id="postal-code"
             required
-            placeholder="123456"
+            placeholder=""
+            disabled
           />
           <span class="error"></span>
         </label>
@@ -52,12 +53,16 @@
             id="password"
             required
             placeholder="Введите пароль"
+            name="password"
+            minlength="8"
+            maxlength="15"
           />
           <span class="error"></span>
         </label>
         <label class="form-group" for="confirm-password">
           <span class="field-label">Подтвердите пароль*:</span>
           <input
+            name="confirm-password"
             type="password"
             id="confirm-password"
             required
