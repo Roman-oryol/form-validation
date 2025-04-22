@@ -94,3 +94,7 @@ button:active {
   background-color: #004494;
   transform: translateY(0);
 }
+
+.success {
+  font-size: 1.5rem;
+}
