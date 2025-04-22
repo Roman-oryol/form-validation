@@ -48,6 +48,7 @@ select:focus {
 }
 
 input:valid.touched,
+input:valid,
 select:valid.touched {
   border-color: #0c962a;
 }
@@ -55,6 +56,11 @@ select:valid.touched {
 input:invalid.touched,
 select:invalid.touched {
   border-color: #ff4d4d;
+}
+
+input:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
 }
 
 .error {
