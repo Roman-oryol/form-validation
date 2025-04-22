@@ -1,3 +1,4 @@
+const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
 const emailField = form.querySelector('input[name="email"]');
 const countrySelect = form.querySelector('select');
@@ -89,8 +90,49 @@ const checkNewPassword = function () {
     invalidMessage = `Минимальное количество символов 8. Вы ввели ${passwordField.value.length}`;
   }
 
+  if (passwordField.validity.valid) {
+    confirmPasswordField.disabled = false;
+  } else {
+    confirmPasswordField.disabled = true;
+  }
+
   passwordField.setCustomValidity(invalidMessage);
   errorEl.textContent = invalidMessage;
+};
+
+const checkConfirmPassword = function () {
+  const password = passwordField.value;
+  const confirmPassword = confirmPasswordField.value;
+  const errorEl = form.querySelector('input[name="confirm-password"] + .error');
+
+  confirmPasswordField.classList.add('touched');
+
+  if (password !== confirmPassword) {
+    confirmPasswordField.setCustomValidity('Пароли не совпадают');
+    errorEl.textContent = confirmPasswordField.validationMessage;
+  }
+};
+
+const handleSubmit = function (e) {
+  e.preventDefault();
+
+  if (form.checkValidity()) {
+    formContainer.innerHTML =
+      '<p class="success">Поздравляем, регистрация прошла успешно!</p>';
+
+    return;
+  }
+
+  emailField.classList.add('touched');
+  passwordField.classList.add('touched');
+  countrySelect.classList.add('touched');
+  postalCodeField.classList.add('touched');
+
+  checkEmail();
+  checkCountry();
+  checkPostalCode();
+  checkNewPassword();
+  checkConfirmPassword();
 };
 
 emailField.addEventListener('blur', () => {
@@ -116,3 +158,12 @@ passwordField.addEventListener('blur', () => {
   checkNewPassword();
 });
 passwordField.addEventListener('input', checkNewPassword);
+
+confirmPasswordField.addEventListener('input', () => {
+  confirmPasswordField.setCustomValidity('');
+  form.querySelector('input[name="confirm-password"] + .error').textContent =
+    '';
+  confirmPasswordField.classList.remove('touched');
+});
+
+form.addEventListener('submit', handleSubmit);
