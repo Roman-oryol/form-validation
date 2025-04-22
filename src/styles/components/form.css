@@ -47,11 +47,13 @@ select:focus {
   border-color: #007bff;
 }
 
-input:valid.touched {
+input:valid.touched,
+select:valid.touched {
   border-color: #0c962a;
 }
 
-input:invalid.touched {
+input:invalid.touched,
+select:invalid.touched {
   border-color: #ff4d4d;
 }
 
